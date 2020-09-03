@@ -1,14 +1,21 @@
-pyanx
-=====
+# pyanx
+
+**Updated for Python 3**
+
+This code is a fork of https://github.com/pcbje/pyanx and updated to work with Python 3.
+
 This tool enables the generation chart files that can be opened in Analyst's Notebook. It's tested against I2 Chart Reader 8 (released May 2012) which is a free, read-only version of Analyst's Notebook. The generated chart files are on the Analyst's Notebook Exchange format (ANX).
 
 I2 Chart Reader URL: https://www-304.ibm.com/connections/blogs/i2/entry/ibm_i2_chart_reader
 
 #### Installation
-<pre>python setup.py install</pre>
+
+`python setup.py install`
 
 #### Usage
-<pre>import pyanx
+
+```
+import pyanx
 
 chart = pyanx.Pyanx()
 
@@ -21,7 +28,8 @@ chart.add_edge(tywin, tyrion, 'Father of')
 chart.add_edge(jaime, tyrion, 'Brother of')
 chart.add_edge(cersei, tyrion, 'Sister of')
 
-chart.create('demo.anx')</pre>
+chart.create('demo.anx')
+```
 
 #### Output
 
