@@ -27,7 +27,7 @@ class Pyanx(object):
     self.timezones = {}
     self.ring_margin = ring_margin
 
-  def add_node(self, entity_type='Anon', label=None, ring_color=None, description='', datestr=None, datestr_description=None, dateformat='%Y-%m-%dT%H:%M:%S', timezone=None):
+  def add_node(self, entity_type='Anon', label=None, ring_color=None, description='', datestr=None, datestr_description=None, dateformat='%Y-%m-%dT%H:%M:%S', timezone=None, x=None, y=None):
     current_id = label
 
     if timezone and timezone not in self.timezones:
@@ -48,7 +48,9 @@ class Pyanx(object):
       'description': description,
       'datetime': _datetime,
       'datetime_description': datestr_description,
-      'timezone': timezone
+      'timezone': timezone,
+      'x': x,
+      'y': y
     }
 
     return current_id
@@ -107,7 +109,17 @@ class Pyanx(object):
       if data['ring_color']:
           circle = anx.FrameStyle(Colour=data['ring_color'], Visible=1, Margin=self.ring_margin)
 
-      x, y = (random.randint(0, 1000), random.randint(0, 1000))
+      x, y = 0
+      
+      if data['x'] == None:
+        x = (random.randint(0, 1000), random.randint(0, 1000))
+      else:
+        x = data['x']
+
+      if data['y'] == None:
+        y = (random.randint(0, 1000), random.randint(0, 1000))
+      else:
+        y = data['y']
 
       icon = anx.Icon(IconStyle=anx.IconStyle(Type=data['entity_type'], FrameStyle=circle))
       entity = anx.Entity(Icon=icon, EntityId=data['label'], Identity=data['label'])
